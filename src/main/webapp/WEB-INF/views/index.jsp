@@ -12,7 +12,7 @@
 </head>
 <body>
 
-
+<a href="/thread">New Thread</a>
 
 <%!
 public class Post{
@@ -80,7 +80,7 @@ System.out.println("Time: " + timeStamp);
 <p>Updated database</p>
 <% 
 post = new Post();
-post.setPosts("5th message", timeStamp); 
+//post.setPosts("5th message", timeStamp); 
 posts = post.getPosts();
 %>
 
