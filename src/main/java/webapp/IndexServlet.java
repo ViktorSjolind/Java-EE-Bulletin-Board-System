@@ -11,10 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
-@WebServlet(urlPatterns = "/login.do")
-public class LoginServlet extends HttpServlet {
+@WebServlet(urlPatterns = "/index.do")
+public class IndexServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		Thread thread = new Thread();
+		
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
 		
 	}
