@@ -1,6 +1,3 @@
-<%@ page import="java.sql.*" %>
-<%@ page import="java.util.Date" %>
-<% Class.forName("com.mysql.jdbc.Driver"); %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -13,11 +10,11 @@
 <body>
 
 
-<%while(posts.next()){ %>
-<p><%= posts.getInt("id") %>
-<%= posts.getString("content")%></p>
-<% }%>
-<br>
+<ul>
+    <c:forEach items="${threadsList}" var="item">
+        <li>${item}</li>
+    </c:forEach>
+</ul>
 
 
 

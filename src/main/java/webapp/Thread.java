@@ -1,15 +1,14 @@
 package webapp;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import java.sql.*;
+import java.util.List;
 
 public class Thread {	
 	private String URL = "jdbc:mysql://localhost:3306/data";
@@ -43,13 +42,23 @@ public class Thread {
 		return result;
 	}
 	
-	public ResultSet getThreadSet(){
+	public List getThreadSet(){
+		List result = new ArrayList();
 		try{
 			resultSet = selectThread.executeQuery();
 		}catch(SQLException e){
 			e.printStackTrace();
 		}	
-		return resultSet;
+		
+		try {
+			while(resultSet.next()){
+				result.add(resultSet.getString(1));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		return result;
 	}
 	
 	
