@@ -42,22 +42,17 @@ public class Thread {
 		return result;
 	}
 	
-	public List getThreadSet(){
-		List result = new ArrayList();
+	public List getThreadList(){
+		List<String> result = new ArrayList();
 		try{
 			resultSet = selectThread.executeQuery();
+			while(resultSet.next()){
+				result.add(resultSet.getString("content"));
+			}
 		}catch(SQLException e){
 			e.printStackTrace();
-		}	
+		}
 		
-		try {
-			while(resultSet.next()){
-				result.add(resultSet.getString(1));
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
 		return result;
 	}
 	

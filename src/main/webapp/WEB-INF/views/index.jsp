@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib  uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,7 @@
 
 <ul>
     <c:forEach items="${threadsList}" var="item">
-        <li>${item}</li>
+        <li>${item} post</li>
     </c:forEach>
 </ul>
 

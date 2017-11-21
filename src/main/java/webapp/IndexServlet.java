@@ -18,10 +18,13 @@ import javax.servlet.http.HttpServletResponse;
 public class IndexServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		Thread thread = new Thread();	
-		List threadsList = thread.getThreadSet();
+		Thread thread = new Thread();
+		List<String> threadsList = thread.getThreadList();
 		request.setAttribute("threadsList", threadsList);
 		
+		for(String str: threadsList){
+			System.out.println(str);
+		}
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
 		
 	}
