@@ -10,10 +10,16 @@
 </head>
 <body>
 
+<h1 id="logoText">Bulletin Board System</h1>
 
-<ul>
+<ul id="threadsList">
     <c:forEach items="${threadsList}" var="item">
-        <li>${item} post</li>
+        <li class="threadBox">
+        <div class="threadBoxHeader">Id: ${item.id} | Time: <span class="threadBoxDate">${item.date}</span> </div>
+        <p class="threadBoxContent">${item.content}</p>
+        
+        </li>
+        <br/> <hr/> <br/>
     </c:forEach>
 </ul>
 

@@ -14,17 +14,19 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 @WebServlet(urlPatterns = "/index.do")
 public class IndexServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		Thread thread = new Thread();
-		List<String> threadsList = thread.getThreadList();
+		DatabaseManager databaseManager = new DatabaseManager();
+		List<Thread> threadsList = databaseManager.getThreadList();
 		request.setAttribute("threadsList", threadsList);
 		
-		for(String str: threadsList){
-			System.out.println(str);
+		for(Thread thread: threadsList){
+			System.out.println(thread.getId() + " " + thread.getContent() + " " + thread.getDate());
 		}
+
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
 		
 	}
