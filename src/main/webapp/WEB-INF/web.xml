@@ -12,7 +12,7 @@
 	
 	<servlet>
 		<servlet-name>Thread Page</servlet-name>
-		<servlet-class>Thread</servlet-class>		
+		<servlet-class>ThreadServlet</servlet-class>		
 	</servlet>
 	
 	<servlet-mapping>

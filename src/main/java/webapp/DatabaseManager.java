@@ -23,8 +23,8 @@ public class DatabaseManager {
 	public DatabaseManager(){
 		try{
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			selectThread = connection.prepareStatement("SELECT id, content, date FROM message");
-			insertThread = connection.prepareStatement("insert into message values(0, ?, ?)");
+			selectThread = connection.prepareStatement("SELECT id, content, date FROM thread");
+			insertThread = connection.prepareStatement("insert into thread values(0, ?, ?)");
 		}catch(SQLException e){
 			e.printStackTrace();
 		}

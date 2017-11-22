@@ -15,9 +15,8 @@
 <ul id="threadsList">
     <c:forEach items="${threadsList}" var="item">
         <li class="threadBox">
-        <div class="threadBoxHeader">Id: ${item.id} | Time: <span class="threadBoxDate">${item.date}</span> </div>
-        <p class="threadBoxContent">${item.content}</p>
-        
+        <div class="threadBoxHeader"><a href="thread">Id: ${item.id}</a> | Time: <span class="threadBoxDate">${item.date}</span> </div>
+        <p class="threadBoxContent">${item.content}</p>        
         </li>
         <br/> <hr/> <br/>
     </c:forEach>
