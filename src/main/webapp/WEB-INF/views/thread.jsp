@@ -8,5 +8,8 @@
 </head>
 <body>
 New thread
+
+${content }
+
 </body>
 </html>
