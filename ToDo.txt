@@ -1,6 +1,6 @@
 Todo:
 
--Each thread needs to show the OP post
+*Each thread needs to show the OP post
 	fetch it from database manager? Thread ID = parentID
 	
 -Post class?
