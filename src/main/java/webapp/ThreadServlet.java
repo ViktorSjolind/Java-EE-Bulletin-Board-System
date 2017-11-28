@@ -19,15 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 public class ThreadServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
-		//DatabaseManager databaseManager = new DatabaseManager();
-		//List<Thread> threadsList = databaseManager.getThreadList();
-		String content = "blabla op sucks";
-		request.setAttribute("content", content);
-		
-		//for(Thread thread: threadsList){
-		//	System.out.println(thread.getId() + " " + thread.getContent() + " " + thread.getDate());
-		//}
-
+		DatabaseManager databaseManager = new DatabaseManager();
+		int parentID = Integer.parseInt(request.getParameter("id"));		
+		List<Thread> postsList = databaseManager.getPostsList(parentID);		
+		request.setAttribute("postsList", postsList);		
 		request.getRequestDispatcher("/WEB-INF/views/thread.jsp").forward(request, response);
 		
 	}

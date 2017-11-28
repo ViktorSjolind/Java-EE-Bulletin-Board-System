@@ -18,12 +18,14 @@ public class DatabaseManager {
 	
 	private PreparedStatement selectThread = null;
 	private PreparedStatement insertThread = null;
+	private PreparedStatement selectPosts = null;
 	private ResultSet resultSet = null;
 	
 	public DatabaseManager(){
 		try{
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 			selectThread = connection.prepareStatement("SELECT id, content, date FROM thread");
+			selectPosts = connection.prepareStatement("SELECT id, content, date FROM post where post.parent_id = ?");
 			insertThread = connection.prepareStatement("insert into thread values(0, ?, ?)");
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -53,6 +55,22 @@ public class DatabaseManager {
 			e.printStackTrace();
 		}
 		
+		return result;
+	}
+	
+	public List getPostsList(int parentID){
+		//reusing Thread class for posts, same DB structure
+		List<Thread> result = new ArrayList();
+		try{
+			selectPosts.setInt(1, parentID);
+			System.out.println("query: " + selectPosts);
+			resultSet = selectPosts.executeQuery();
+			while(resultSet.next()){
+				result.add(new Thread(resultSet.getInt("id"), resultSet.getString("content"), resultSet.getTimestamp("date")));
+			}
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
 		return result;
 	}
 	
