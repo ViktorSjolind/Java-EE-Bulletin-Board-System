@@ -65,11 +65,11 @@ public class DatabaseManager {
 	}
 	
 	public List getThreadList(){
-		List<Thread> result = new ArrayList();
+		List<Message> result = new ArrayList();
 		try{
 			resultSet = selectThreads.executeQuery();
 			while(resultSet.next()){
-				result.add(new Thread(resultSet.getInt("id"), resultSet.getString("content"), resultSet.getTimestamp("date")));
+				result.add(new Message(resultSet.getInt("id"), resultSet.getString("content"), resultSet.getTimestamp("date")));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();
@@ -79,14 +79,14 @@ public class DatabaseManager {
 	}
 	
 	public List getSpecificThread(int ID){		
-		List<Thread> result = new ArrayList();
+		List<Message> result = new ArrayList();
 		try{
 			selectSpecificThread.setInt(1, ID);
 			System.out.println("query: " + selectSpecificThread);			
 			//Fetch the OP post
 			resultSet = selectSpecificThread.executeQuery();
 			while(resultSet.next()){
-				result.add(new Thread(resultSet.getInt("id"), resultSet.getString("content"), resultSet.getTimestamp("date")));
+				result.add(new Message(resultSet.getInt("id"), resultSet.getString("content"), resultSet.getTimestamp("date")));
 			}
 			
 		}catch(SQLException e){
@@ -97,13 +97,13 @@ public class DatabaseManager {
 	
 	public List getPostsList(int parentID){
 		//reusing Thread class for posts, same DB structure
-		List<Thread> result = new ArrayList();
+		List<Message> result = new ArrayList();
 		try{
 			selectPosts.setInt(1, parentID);
 			System.out.println("query: " + selectPosts);				
 			resultSet = selectPosts.executeQuery();
 			while(resultSet.next()){
-				result.add(new Thread(resultSet.getInt("id"), resultSet.getString("content"), resultSet.getTimestamp("date")));
+				result.add(new Message(resultSet.getInt("id"), resultSet.getString("content"), resultSet.getTimestamp("date")));
 			}
 		}catch(SQLException e){
 			e.printStackTrace();

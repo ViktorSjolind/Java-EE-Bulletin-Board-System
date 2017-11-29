@@ -20,7 +20,7 @@ public class IndexServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		DatabaseManager databaseManager = new DatabaseManager();
-		List<Thread> threadsList = databaseManager.getThreadList();
+		List<Message> threadsList = databaseManager.getThreadList();
 		request.setAttribute("threadsList", threadsList);
 		
 		

@@ -22,9 +22,11 @@
         </c:set>        
         
         <div class="threadBoxHeader"> <a href="${threadURL }"> Id: ${item.id}</a> | Time: <span class="threadBoxDate">${item.date}</span> <a href="${threadURL }"> Reply </a></div>        
-        <p class="threadBoxContent">${item.content}</p>        
-        </li>
+        <p class="threadBoxContent">${item.content}</p>   
         <br/> <hr/> <br/>
+            
+        </li>
+       
     </c:forEach>
 </ul>
 

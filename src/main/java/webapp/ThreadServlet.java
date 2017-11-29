@@ -21,7 +21,7 @@ public class ThreadServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		DatabaseManager databaseManager = new DatabaseManager();
 		int parentID = Integer.parseInt(request.getParameter("id"));
-		List<Thread> postsList = databaseManager.getSpecificThread(parentID);
+		List<Message> postsList = databaseManager.getSpecificThread(parentID);
 		postsList.addAll(databaseManager.getPostsList(parentID));	
 		
 		request.setAttribute("postsList", postsList);		
