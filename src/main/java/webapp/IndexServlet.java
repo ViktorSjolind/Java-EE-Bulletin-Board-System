@@ -23,10 +23,7 @@ public class IndexServlet extends HttpServlet {
 		List<Thread> threadsList = databaseManager.getThreadList();
 		request.setAttribute("threadsList", threadsList);
 		
-		for(Thread thread: threadsList){
-			System.out.println(thread.getId() + " " + thread.getContent() + " " + thread.getDate());
-		}
-
+		
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
 		
 	}

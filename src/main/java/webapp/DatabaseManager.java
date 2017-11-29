@@ -18,6 +18,7 @@ public class DatabaseManager {
 	
 	private PreparedStatement selectThreads = null;
 	private PreparedStatement insertThread = null;
+	private PreparedStatement insertPost = null;
 	private PreparedStatement selectPosts = null;
 	private PreparedStatement selectSpecificThread = null;
 	private ResultSet resultSet = null;
@@ -28,10 +29,27 @@ public class DatabaseManager {
 			selectThreads = connection.prepareStatement("SELECT id, content, date FROM thread");
 			selectSpecificThread = connection.prepareStatement("SELECT id, content, date FROM thread WHERE thread.id = ?");			
 			selectPosts = connection.prepareStatement("SELECT id, content, date FROM post WHERE post.parent_id = ?");			
+			insertPost = connection.prepareStatement("insert into post values(0, ?, ?, ?)");
 			insertThread = connection.prepareStatement("insert into thread values(0, ?, ?)");
 		}catch(SQLException e){
 			e.printStackTrace();
 		}
+	}
+	
+	
+	public void insertPost(String name, String content, int parentID){
+		//id, content, date, parent_id
+		try{
+			//insertPost.setString(1, name);
+			insertPost.setString(1, content);
+			insertPost.setTimestamp(2, new Timestamp(new Date().getTime()));
+			insertPost.setInt(3, parentID);
+			insertPost.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	public int setPosts(String content, Timestamp timeStamp){

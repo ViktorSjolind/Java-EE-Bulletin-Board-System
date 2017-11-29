@@ -6,3 +6,8 @@ Todo:
 -Post class?
 
 -Post css
+
+-jQuery
+
+-jQuery dialog 
+	floating submit form

@@ -18,7 +18,14 @@
 	<br/> <hr/> <br/>
 </c:forEach>
 
-
+<form action="/thread?id=${id }" method="post" name="postForm">	
+	<input type="text" name ="inputName" placeholder="Name"/>
+	<br>
+	<textarea rows="10" cols="80" name="inputContent" placeholder="Comment"></textarea>
+	<br>	
+	<input type="submit" value="Post"/>
+</form>
+parent: ${id }
 
 </body>
 </html>

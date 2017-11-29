@@ -25,8 +25,20 @@ public class ThreadServlet extends HttpServlet {
 		postsList.addAll(databaseManager.getPostsList(parentID));	
 		
 		request.setAttribute("postsList", postsList);		
+		request.setAttribute("id", parentID);	
 		request.getRequestDispatcher("/WEB-INF/views/thread.jsp").forward(request, response);
 		
 	}
-
+		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		DatabaseManager databaseManager = new DatabaseManager();
+		String name = request.getParameter("inputName");
+		String content = request.getParameter("inputContent");
+		int parentID = Integer.parseInt(request.getParameter("id"));	
+		
+		databaseManager.insertPost(name, content, parentID);		
+		doGet(request, response);
+	}
+	
+	
 }

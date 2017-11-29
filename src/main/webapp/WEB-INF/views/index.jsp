@@ -21,7 +21,7 @@
         	</c:url>
         </c:set>        
         
-        <div class="threadBoxHeader"> <a href="${threadURL }"> Id: ${item.id}</a> | Time: <span class="threadBoxDate">${item.date}</span> </div>        
+        <div class="threadBoxHeader"> <a href="${threadURL }"> Id: ${item.id}</a> | Time: <span class="threadBoxDate">${item.date}</span> <a href="${threadURL }"> Reply </a></div>        
         <p class="threadBoxContent">${item.content}</p>        
         </li>
         <br/> <hr/> <br/>
