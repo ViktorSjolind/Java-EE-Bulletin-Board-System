@@ -52,6 +52,21 @@ public class DatabaseManager {
 		
 	}
 	
+	public void insertThread(String name, String content){
+		//id, content, date
+		try{
+			//insertPost.setString(1, name);
+			insertThread.setString(1, content);
+			insertThread.setTimestamp(2, new Timestamp(new Date().getTime()));
+			insertThread.execute();
+		}catch(SQLException e){
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	
 	public int setPosts(String content, Timestamp timeStamp){
 		int result = 0;		
 		try{
@@ -81,8 +96,7 @@ public class DatabaseManager {
 	public List getSpecificThread(int ID){		
 		List<Message> result = new ArrayList();
 		try{
-			selectSpecificThread.setInt(1, ID);
-			System.out.println("query: " + selectSpecificThread);			
+			selectSpecificThread.setInt(1, ID);			
 			//Fetch the OP post
 			resultSet = selectSpecificThread.executeQuery();
 			while(resultSet.next()){

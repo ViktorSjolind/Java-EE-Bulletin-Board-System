@@ -27,5 +27,13 @@ public class IndexServlet extends HttpServlet {
 		request.getRequestDispatcher("/WEB-INF/views/index.jsp").forward(request, response);
 		
 	}
+	
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
+		DatabaseManager databaseManager = new DatabaseManager();
+		String name = request.getParameter("inputName");
+		String content = request.getParameter("inputContent");		
+		databaseManager.insertThread(name, content);			
+		doGet(request, response);
+	}
 
 }
