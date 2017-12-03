@@ -11,7 +11,7 @@ import java.util.Date;
 import java.util.List;
 
 public class DatabaseManager {	
-	private String URL = "jdbc:mysql://localhost:3306/data";
+	private String URL = "jdbc:mysql://localhost:3306/data?verifyServerCertificate=false&useSSL=true";
 	private String USERNAME = Preferences.getUsername();
 	private String PASSWORD = Preferences.getPassword();	
 	private Connection connection = null;
@@ -113,8 +113,7 @@ public class DatabaseManager {
 		//reusing Thread class for posts, same DB structure
 		List<Message> result = new ArrayList();
 		try{
-			selectPosts.setInt(1, parentID);
-			System.out.println("query: " + selectPosts);				
+			selectPosts.setInt(1, parentID);			
 			resultSet = selectPosts.executeQuery();
 			while(resultSet.next()){
 				result.add(new Message(resultSet.getInt("id"), resultSet.getString("content"), resultSet.getTimestamp("date")));
