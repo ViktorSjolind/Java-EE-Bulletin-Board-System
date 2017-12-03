@@ -12,8 +12,8 @@ import java.util.List;
 
 public class DatabaseManager {	
 	private String URL = "jdbc:mysql://localhost:3306/data";
-	private String USERNAME = "root";
-	private String PASSWORD = "t00rSQL";	
+	private String USERNAME = Preferences.getUsername();
+	private String PASSWORD = Preferences.getPassword();	
 	private Connection connection = null;
 	
 	private PreparedStatement selectThreads = null;
